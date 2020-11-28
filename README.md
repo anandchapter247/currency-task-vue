@@ -1,4 +1,4 @@
-TO setup currency-task-vue app have this code. To run you must have install vue in your computer. If don't have install it from https://cli.vuejs.org/guide/installation.html link.
+The currency-task-vue directory have this code. To run you must have install vue in your computer. If don't have install it from https://cli.vuejs.org/guide/installation.html link.
 
 Node NPM also required to run this. Follow this https://www.npmjs.com/get-npm link for install
 
