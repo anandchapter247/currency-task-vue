@@ -12,6 +12,7 @@
             placeholder="Email"
             v-model="email"
             class="custom-input"
+            v-on:keyup.enter="login()"
           />
           <input
             type="password"
@@ -20,6 +21,8 @@
             placeholder="Password"
             v-model="password"
             class="custom-input"
+            v-on:keyup.enter="login()"
+
           />
           <button @click="login()" class="theme-btn">Login</button>
           <span class="error-text" v-show="itemExistMsg !== ''">{{

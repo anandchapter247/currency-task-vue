@@ -24,6 +24,7 @@
         class="custom-input"
         placeholder="From Date(yyyy-mm-dd)"
         v-model="from_date"
+        v-on:keyup.enter="getCurrencyList()"
       />
       <input
         type="text"
@@ -32,6 +33,7 @@
         class="custom-input"
         placeholder="To Date(yyyy-mm-dd)"
         v-model="to_date"
+        v-on:keyup.enter="getCurrencyList()"
       />
       <button @click="getCurrencyList()" class="theme-btn width225px">Get History</button>
       </div>

@@ -32,6 +32,7 @@
           class="custom-input"
           placeholder="Date(yyyy-mm-dd)"
           v-model="from_date"
+          v-on:keyup.enter="getCurrencyRates()"
         />
 
         <button @click="getCurrencyRates()" class="theme-btn width225px">
