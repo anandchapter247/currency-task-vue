@@ -72,7 +72,8 @@
 if (localStorage.getItem("item_management_token") === null) {
   // localStorage.setItem("item_management_token", uniqueToken.join(""));
 }
-const APIURL = "http://localhost/currency_api/";
+import config from "../config";
+const APIURL = config.API_URL;
 import axios from "axios";
 import DefaultLayout from "../layouts/DefaultLayout";
 
@@ -102,20 +103,16 @@ export default {
 
       axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 
-      const response = axios.post(
-        `http://localhost/currencyTask/public/api/currency/list`,
-        data,
-        {
-          headers: {
-            Authorization:
-              "Bearer " + localStorage.getItem("currencyIsUserLogin"),
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = axios.post(APIURL + `currency/list`, data, {
+        headers: {
+          Authorization:
+          "Bearer " + localStorage.getItem("currencyIsUserLogin"),
+          "Content-Type": "application/json",
+        },
+      });
       response
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           this.currency_list = response.data.data.data;
         })
         .catch((e) => {
@@ -135,13 +132,13 @@ export default {
       } else {
         this.post_data = { base_currency_id: this.cid };
       }
-      console.log(this.cid);
-      console.log(`${APIURL}currency/list`);
+      // console.log(this.cid);
+      // console.log(`${APIURL}currency/list`);
 
       axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 
       const response = axios.post(
-        `http://localhost/currencyTask/public/api/currency/calculation`,
+        APIURL+`currency/calculation`,
         this.post_data,
         {
           headers: {
@@ -153,13 +150,13 @@ export default {
       );
       response
         .then((response) => {
-          console.log(response.data.data.min);
+          // console.log(response.data.data.min);
           // console.log(response.data.data.history);
           // this.currency = response.data.data.currency;
           this.rate_list.min = response.data.data.min;
           this.rate_list.max = response.data.data.max;
           this.rate_list.avg = response.data.data.avg;
-          console.log(this.rate_list);
+          // console.log(this.rate_list);
           // this.links = response.data.data.history.links;
           // this.from = response.data.data.history.from;
         })
@@ -170,10 +167,10 @@ export default {
     },
     showList(pageno) {
       if (pageno == "Next &raquo;") {
-        console.log("next");
+        // console.log("next");
         this.page = this.page + 1;
       } else if (pageno == "&laquo; Previous") {
-        console.log("previous");
+        // console.log("previous");
         this.page = this.page - 1;
       } else {
         this.page = pageno;
@@ -183,11 +180,6 @@ export default {
   },
 };
 
-// function pad(n, width, z) {
-//   z = z || "0";
-//   n = n + "";
-//   return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
-// }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

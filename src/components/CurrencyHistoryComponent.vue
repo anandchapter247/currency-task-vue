@@ -71,7 +71,8 @@
 if (localStorage.getItem("item_management_token") === null) {
   // localStorage.setItem("item_management_token", uniqueToken.join(""));
 }
-const APIURL = "http://localhost/currency_api/";
+import config from '../config'
+const APIURL = config.API_URL ;
 import axios from "axios";
 import DefaultLayout from "../layouts/DefaultLayout";
 
@@ -110,12 +111,12 @@ export default {
         this.post_data = { page_size: this.page_size, currency_id: cid, page: this.page };
       }
 
-      console.log(`${APIURL}currency/list`);
+      // console.log(`${APIURL}currency/list`);
 
       axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 
       const response = axios.post(
-        `http://localhost/currencyTask/public/api/currency/history`,
+        APIURL+`currency/history`,
         this.post_data,
         {
           headers: {
@@ -127,8 +128,8 @@ export default {
       );
       response
         .then((response) => {
-          console.log(response.data.data.currency);
-          console.log(response.data.data.history);
+          // console.log(response.data.data.currency);
+          // console.log(response.data.data.history);
           this.currency = response.data.data.currency;
           this.currency_list = response.data.data.history.data;
           this.links = response.data.data.history.links;

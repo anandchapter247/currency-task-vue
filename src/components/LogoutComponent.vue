@@ -1,7 +1,7 @@
 <script>
 import config from '../config'
 const APIURL = config.API_URL ;
-console.log(APIURL);
+// console.log(APIURL);
 import axios from "axios";
 import DefaultLayout from "../layouts/DefaultLayout";
 
@@ -27,8 +27,8 @@ export default {
           email: this.email,
           password: this.password,
         };
-        console.log( config.API_URL );
-        const response = axios.post ("http://localhost/currencyTask/public/api/logout", data,  {
+        // console.log( config.API_URL );
+        const response = axios.post (APIURL+`logout`, data,  {
           headers: {
             "Authorization" : "Bearer "+localStorage.getItem("currencyIsUserLogin"),
             "Content-Type": "application/json",

@@ -85,7 +85,7 @@ export default {
           password: this.password,
         };
         console.log( config.API_URL );
-        const response = axios.post ("http://localhost/currencyTask/public/api/login", data);
+        const response = axios.post (APIURL+`login`, data);
         response
           .then((response) => {
             console.log(response.data);

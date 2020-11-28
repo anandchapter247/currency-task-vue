@@ -75,7 +75,7 @@ export default {
       axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 
       const response = axios.post(
-        `http://localhost/currencyTask/public/api/currency/list`,
+        APIURL+`currency/list`,
         data,
         {
           headers: {
@@ -91,10 +91,6 @@ export default {
           this.currency_list = response.data.data.data;
           this.links = response.data.data.links;
           this.from = response.data.data.from;
-          // this.currency_list.forEach((e) => {
-          //   this.item_list.push(e.name);
-          //   this.left_items.push(e.name);
-          // });
         })
         .catch((e) => {
           var error = e.response.data;
